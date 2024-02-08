@@ -15,7 +15,7 @@ LINE = "------------------------------------------------------------------------
 
 def menu(layout: int) -> None:
     op = -1
-    while(op < 0 or op > 2):
+    while True:
         match layout:
             case 1:
                 print(
@@ -38,8 +38,14 @@ def menu(layout: int) -> None:
                     sep="\n"
                 )
 
-        op = int(input("Opcao: "))
-    return op
+        op = input("Opcao: ")
+        
+        if not op.isdigit():
+            continue
+
+        op = int(op)
+        if layout == 1 and op in (0,1,2):
+            return op
 
 def main():
     r = Retangulo(20)

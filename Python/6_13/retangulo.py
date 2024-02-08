@@ -1,5 +1,6 @@
 import math
 from typing import Tuple, Iterable
+import turtle
 
 Coordenada = Tuple[float, float]
 
@@ -245,9 +246,6 @@ class Retangulo:
         self.__showMsg("Distancias internas equivalentes:", self.__distInternasEquivalentes)
         self.__showMsg("E um retangulo:", self.__isRet)
 
-        # if not isRet:
-        #     return
-
         print("\nMedidas")
         print(BLUE, "Area:      ", GREEN, self.getArea(), NORMAL)
         print(BLUE, "Perimetro: ", GREEN, self.getPerimetro(), NORMAL)
@@ -260,6 +258,18 @@ class Retangulo:
 
         print("\nCoordenadas dos vertices")
         self.displayCoordenadas()
+
+        if self.__isRet:
+            t = turtle.Turtle()
+            scale = 7
+
+            t.goto(self.__D[0] * scale, self.__D[1] * scale)
+            t.goto(self.__A[0] * scale, self.__A[1] * scale)
+            t.goto(self.__B[0] * scale, self.__B[1] * scale)
+            t.goto(self.__C[0] * scale, self.__C[1] * scale)
+            t.goto(self.__D[0] * scale, self.__D[1] * scale)
+
+            turtle.done()
 
     def getPerimetro(self) -> float:
         return sum(tuple(self.__distancias.values())[:4])
